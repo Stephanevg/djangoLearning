@@ -29,21 +29,22 @@ $AllMDs = Get-ChildItem .\ -Recurse -Filter "*.md"
 $directories = $AllMDs | group directory
 
 
-$a += "<br>`r`n"
+$a += "`r`n"
+$a += "`r`n"
 foreach ($folder in $directories){
 
     $leaf = $null
     $leaf = (split-Path $folder.name -leaf)
-    $a += "<br>`r`n"
+    $a += "`r`n"
     $a += "## $($leaf) `r`n"
-    $a += "`r`n<br>"
+    $a += "`r`n"
     foreach ($file in $folder.group){
 
 
         $relPath = $null
         $relPath = (($file | Resolve-Path -Relative).Replace(".\","\")).replace('\','/')
         $a += "[$($file.BaseName)]($relPath)"
-        $a += " <br> "
+        $a += "<br>`r`n "
 
     }
     
