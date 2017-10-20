@@ -29,14 +29,14 @@ $AllMDs = Get-ChildItem .\ -Recurse -Filter "*.md"
 $directories = $AllMDs | group directory
 
 
-
+$a += "<br>`r`n"
 foreach ($folder in $directories){
 
     $leaf = $null
     $leaf = (split-Path $folder.name -leaf)
-    $a += "<br><br>"
-    $a += "<br><br>$($leaf)<br><br>"
-    $a += "<br><br>"
+    $a += "<br>`r`n"
+    $a += "## $($leaf) `r`n"
+    $a += "`r`n<br>"
     foreach ($file in $folder.group){
 
 
