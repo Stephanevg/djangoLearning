@@ -1,4 +1,4 @@
-
+set-location C:\Users\taavast3\OneDrive\Blogs\PowerShellDistrict\Python\django
 $a = @"
 # Django learning repo
 
@@ -26,11 +26,27 @@ tbd
 
 $AllMDs = Get-ChildItem .\ -Recurse -Filter "*.md"
 
-foreach ($file in $AllMDs){
-    $relPath = $null
-    $relPath = (($file | Resolve-Path -Relative).Replace(".\","\")).replace('\','/')
-    $a += "[$($file.BaseName)]($relPath)"
-    $a += " <br> "
+$directories = $AllMDs | group directory
+
+
+
+foreach ($folder in $directories){
+
+    $leaf = $null
+    $leaf = (split-Path $folder.name -leaf)
+    $a += "<br><br>"
+    $a += "<br><br>$($leaf)<br><br>"
+    $a += "<br><br>"
+    foreach ($file in $folder.group){
+
+
+        $relPath = $null
+        $relPath = (($file | Resolve-Path -Relative).Replace(".\","\")).replace('\','/')
+        $a += "[$($file.BaseName)]($relPath)"
+        $a += " <br> "
+
+    }
+    
 
 }
 
