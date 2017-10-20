@@ -28,9 +28,9 @@ $AllMDs = Get-ChildItem .\ -Recurse -Filter "*.md"
 
 foreach ($file in $AllMDs){
     $relPath = $null
-    $relPath = $file | Resolve-Path -Relative
+    $relPath = (($file | Resolve-Path -Relative).Replace(".\","\")).replace('\','/')
     $a += "[$($file.BaseName)]($relPath)"
-    $a += "<br>"
+    $a += " <br> "
 
 }
 
