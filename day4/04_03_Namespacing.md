@@ -26,6 +26,9 @@ We can then access the detail method form the scripts/models function win the se
 url 'scripts:detail'
 ```
 
+The first part, is the name of the app (the one defined using the **app_name** variable in the **urls.py** file.) In this case **scripts** points to our **app** called 'scripts'. The second part, after the '**;**', which in this case is **'detail'** and actually points to the 'detail' method from the **scripts/models** file.
+
+
 an exmaple of the concrete call is here under
 
 ```html
